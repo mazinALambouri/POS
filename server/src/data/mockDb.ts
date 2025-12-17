@@ -28,35 +28,13 @@ export const companies: Company[] = [
 
 export const users: User[] = [
     {
-        id: 'dev1',
-        username: 'dev',
-        passwordHash: bcrypt.hashSync('dev123', 10),
-        role: 'developer',
-        name: 'System Developer'
-    },
-    {
-        id: '1',
-        username: 'admin',
+        id: 'admin-1',
+        username: 'storeowner',
+        email: 'admin@mystore.com',
         passwordHash: bcrypt.hashSync('admin123', 10),
         role: 'admin',
-        name: 'Admin User',
+        name: 'Store Owner',
         companyId: '1'
-    },
-    {
-        id: '2',
-        username: 'cashier',
-        passwordHash: bcrypt.hashSync('cashier123', 10),
-        role: 'cashier',
-        name: 'John Doe',
-        companyId: '1'
-    },
-    {
-        id: '3',
-        username: 'grocer_admin',
-        passwordHash: bcrypt.hashSync('admin123', 10),
-        role: 'admin',
-        name: 'Grocer Admin',
-        companyId: '2'
     }
 ];
 

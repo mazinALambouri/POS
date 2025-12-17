@@ -13,6 +13,7 @@ export interface Company {
 export interface User {
     id: string;
     username: string;
+    email: string;
     passwordHash: string;
     role: 'developer' | 'admin' | 'cashier';
     name: string;

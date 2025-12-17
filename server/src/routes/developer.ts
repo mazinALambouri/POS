@@ -39,23 +39,28 @@ router.post('/companies', (req, res) => {
 // Create an admin for a company
 router.post('/companies/:id/admin', (req, res) => {
     const { id } = req.params;
-    const { username, password, name } = req.body;
+    const { email, password, name } = req.body;
 
     const company = companies.find(c => c.id === id);
     if (!company) {
         return res.status(404).json({ message: 'Company not found' });
     }
 
-    if (users.find(u => u.username === username)) {
-        return res.status(400).json({ message: 'Username already exists' });
+    if (!email || !password) {
+        return res.status(400).json({ message: 'Email and password are required' });
+    }
+
+    if (users.find(u => u.email === email)) {
+        return res.status(400).json({ message: 'Email already exists' });
     }
 
     const newUser = {
         id: crypto.randomUUID(),
-        username,
+        username: email.split('@')[0],
+        email,
         passwordHash: bcrypt.hashSync(password, 10),
         role: 'admin' as const,
-        name,
+        name: name || email.split('@')[0],
         companyId: id
     };
 

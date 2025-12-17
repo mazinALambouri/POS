@@ -35,6 +35,10 @@ export const api = {
         return axios.get<any[]>(`${API_URL}/auth/users`);
     },
 
+    async createCashier(cashier: { email: string; password: string; name: string }) {
+        return axios.post(`${API_URL}/auth/users/cashier`, cashier);
+    },
+
     async getTransactions() {
         return axios.get<any[]>(`${API_URL}/transactions`);
     },
